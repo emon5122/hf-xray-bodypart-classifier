@@ -1,0 +1,25 @@
+{
+  "model_type": "image-classification",
+  "architecture": "convnext_tiny",
+  "framework": "onnx",
+  "task": "xray-bodypart-classification",
+  "num_classes": 33,
+  "input": {
+    "name": "images",
+    "shape": [1, 3, 224, 224],
+    "dtype": "float32",
+    "layout": "NCHW"
+  },
+  "output": {
+    "name": "probs",
+    "description": "softmax probabilities over the classes in classes.txt (same order)"
+  },
+  "preprocessing": {
+    "color": "RGB",
+    "resize_shorter_edge": 224,
+    "center_crop": 224,
+    "rescale": "pixel / 255.0",
+    "normalize_mean": [0.485, 0.456, 0.406],
+    "normalize_std": [0.229, 0.224, 0.225]
+  }
+}
